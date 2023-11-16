@@ -1,11 +1,176 @@
-#heading{
-    color: red;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-.child1{
-    color: blue;
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
-#child2{
-    color: red;
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin-block-end: 0;
 }
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+/* My code starting from here  */
+
+
+.logo-image {
+    display: flex;
+    width: 110px;
+    height: 110px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.nav-item>ul {
+    list-style-type: none;
+    display: flex;
+}
+
+
+.header-container {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.nav-item>ul>li {
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.card {
+    
+    width: 255px;
+    transition: transform 0.1s;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+
+}
+
+
+.card:hover {
+    transform: scale(1.1);
+   cursor: pointer;
+}
+
+.res-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.card-img {
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.card-img :hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: ease 0.2s;
+    overflow: hidden;
+    width: 280px;
+    border-radius: 10px;
+}
+
+.card-details {
+    padding: 0px 10px;
+
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+
+}
+
