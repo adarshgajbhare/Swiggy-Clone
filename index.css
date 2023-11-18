@@ -195,3 +195,15 @@ body {
     background-color: black;
     color: wheat;
 }
+
+.filter-btn{
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.filter :hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}

@@ -4,7 +4,7 @@
   "description": "Adarsh Learning React",
   "scripts": {
     "start": "parcel index.html",
-    "build" : " parcel build index.html",
+    "build": " parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/adarshgajbhare/namaste-react#readme",
   "devDependencies": {
-    "parcel": "^2.10.2",
+    "parcel": "^2.10.3",
     "process": "^0.11.10"
   },
   "dependencies": {
@@ -29,5 +29,4 @@
   "browserslist": [
     "last 2 version"
   ]
-
 }
