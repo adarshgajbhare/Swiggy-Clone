@@ -7,7 +7,7 @@ const Header = () => {
         <ul>
           <li className="logo-image">
             {" "}
-            <img src={logo} alt="" />
+           <img src={logo} alt="" /> 
           </li>
           <li className="nav-links">Search</li>
           <li className="nav-links">Home</li>

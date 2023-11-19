@@ -1,0 +1,24 @@
+/* Header styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(35px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #04060A;
+   
+    border-radius: 10px;
+    padding: 10px;
+}
+.filter-btn{
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color:  rgba(255, 255, 255, 0.5);
+}
+
+.filter :hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}

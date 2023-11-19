@@ -1,0 +1,30 @@
+/* Navigation styles */
+.nav-item>ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.nav-links {
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+/* Optional: Styles for each list item */
+.nav-item>ul>li {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+
+}
+
+
+.logo-image{
+    width: 200px;
+    height: 100px;
+}
