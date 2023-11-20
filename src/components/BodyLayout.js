@@ -1,71 +1,63 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
+import { API_KEY } from "../utils/constants";
+import Search from "./searchbar";
+import AddToCartButton from "./AddToCartButton"
 // import resData from "../utils/mockData";
 
 const BodyLayout = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const topRatedRestaurants = () => {
-    const filterList = resData.filter((resData) => resData.data.avgRating > 4);
-    setListOfRestaurant(filterList);
-    console.log("clicked");
+  const checkJsonData = (jsonData) => {
+    const allRestaurantsData = [];
+
+    for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+      const restaurantsData =
+        jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      if (restaurantsData !== undefined) {
+        allRestaurantsData.push(restaurantsData);
+      }
+    }
+    return allRestaurantsData;
   };
-
-  const lowRatedRestaurants = () => {
-    const filterList = resData.filter( 
-      (resData) => resData.data.avgRating < 3.5
-    );
-    setListOfRestaurant(filterList);
-    console.log("clicked");
-  };
-
-  const allRatedRestaurants = () => {
-    setListOfRestaurant(resData);
-  };
-
-
-  useEffect ( ()=> {fetchData(); }, []) ;  
 
   const fetchData = async () => {
     try {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const data = await fetch(API_KEY);
       const json = await data.json();
-    
-    const jsonData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-      console.log(jsonData)
-      setListOfRestaurant(jsonData);
-      console.log("data fetched successfully!!!!!")
+      console.log(json);
+      if (json) {
+        const APIFetchedData = await checkJsonData(json);
+        setListOfRestaurant(APIFetchedData.flat()); // flatten the array of arrays
+        console.log("data fetched successfully!!!!!");
+      } else {
+        console.log("No data fetched from API");
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  };
 
   return (
     <div className="body">
-      <div className="filter">
-        <button className="filter-btn"
-     onClick={topRatedRestaurants} 
-        >
-          Top Rated Restaurants
-        </button>
-        <button className="filter-btn" 
-        onClick={lowRatedRestaurants}
-        >
-          Low Rated Restaurants
-        </button>
-        <button className="filter-btn" 
-       onClick={allRatedRestaurants}
-        >
-          All Restaurants
-        </button>
-      </div>
+    <div className="container">
+      <h1>Top restaurants near you </h1>
+       <Search /> 
+    </div>
+    
       <div className="res-container">
-        {listOfRestaurant &&  listOfRestaurant.map((restaurants) => (
-          <RestaurantCard
-            key={restaurants?.info?.id}
-            resData={restaurants?.info}
-          />
-        ))}
+        {listOfRestaurant &&
+          listOfRestaurant.map((restaurants) => (
+            <RestaurantCard
+              key={restaurants?.info?.id}
+              resData={restaurants?.info}
+            />
+          ))}
       </div>
     </div>
   );

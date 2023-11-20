@@ -1,4 +1,4 @@
-/* Navigation styles */
+
 .nav-item>ul {
     list-style-type: none;
     display: flex;
@@ -6,25 +6,35 @@
 }
 
 .nav-links {
-    color: black;
+    color: #666666;
     padding: 20px;
     text-decoration: none;
     cursor: pointer;
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
 
 }
 
-/* Optional: Styles for each list item */
-.nav-item>ul>li {
-    list-style-type: none;
+.nav-item{
     display: flex;
-    margin-left: auto;
-
+    align-items: center;
+    justify-content: space-around;
 }
+
+
+/* .nav-item>ul>li {
+    list-style-type: none;
+
+} */
 
 
 .logo-image{
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 90px;
+   transform: scale(0.9);
+    position: relative;
+    top: 8px;
+    left: -30px;
+    margin-right: auto;
 }

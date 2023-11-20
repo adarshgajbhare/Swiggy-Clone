@@ -1,26 +1,33 @@
 import { CARD_IMG } from "../utils/constants";
+import AddToCartButton from "./AddToCartButton";
 const RestaurantCard = ({ resData }) => {
   const {
     name,
     cuisines,
     avgRating,
-    maxDeliveryTime,
+    sla,
     cloudinaryImageId,
     costForTwo,
   } = resData || {};
 
  const cardStyle = {
   backgroundImage: `url(${cloudinaryImageId ? CARD_IMG + cloudinaryImageId : ''})`,
-  backgroundPosition: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
+  // backgroundPosition: "center",
+  // backgroundSize: "cover",
+  // backgroundRepeat: "no-repeat",
 };
 
-
+const move = () =>{
+  console.log("cliked");
+}
   return (
+    
     <div className="res-container">
-      <div className="card" style={cardStyle}>
-        {/* <img className="card-img" src={CARD_IMG + cloudinaryImageId} alt="" /> */}
+      <div className="card"onMouseMove={move}>
+        <div className="imgb" style={cardStyle} >
+          
+        </div>
+        <AddToCartButton/>
         <div className="card-details">
           <div className="bar"> </div>
           <p className="name">{name}</p>
@@ -67,7 +74,9 @@ const RestaurantCard = ({ resData }) => {
             </span>{" "}
             <span className="rating-text">{avgRating}</span>
           </p>
-          <p className="other">Delivery In {maxDeliveryTime} Minutes </p>
+          {/* <p className="other">Delivery In {sla?.slaString.split(' ')[0]} Minutes </p> */}
+
+          <p className="other">{sla?.lastMileTravelString}, {sla?.slaString.split(' ')[0]} mins delivery time </p>
         </div>
       </div>
     </div>
