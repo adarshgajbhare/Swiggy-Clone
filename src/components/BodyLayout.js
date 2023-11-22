@@ -2,7 +2,6 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { API_KEY } from "../utils/constants";
 import Search from "./searchbar";
-import AddToCartButton from "./AddToCartButton"
 // import resData from "../utils/mockData";
 
 const BodyLayout = () => {
@@ -45,11 +44,15 @@ const BodyLayout = () => {
 
   return (
     <div className="body">
-    <div className="container">
-      <h1>Top restaurants near you </h1>
-       <Search /> 
-    </div>
-    
+      <div className="container">
+        <h1>Top restaurants near you </h1>
+        <Search
+          listOfRestaurant={listOfRestaurant}
+          resData={listOfRestaurant}
+          setListOfRestaurant={setListOfRestaurant}
+        />
+      </div>
+
       <div className="res-container">
         {listOfRestaurant &&
           listOfRestaurant.map((restaurants) => (
