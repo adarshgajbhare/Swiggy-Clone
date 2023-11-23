@@ -43,7 +43,7 @@
         background: #2fbf30;
         -webkit-box-shadow: 0 0 0 0.2rem rgba(11, 252, 3, 0.45);
         box-shadow: 0 0 0 0.2rem rgba(11, 252, 3, 0.45);
-
+        height: 50px;
         .add-to-cart {
             display: none;
         }
@@ -120,6 +120,7 @@
     transform: scale(0);
     top: 5px;
     z-index: 2;
+   
 }
 
 @-webkit-keyframes grow {
@@ -144,7 +145,7 @@
     100% {transform: translateY(1px);}
 }
 
-/* Page style */
+
 .card {
     align-items: center;
     display: flex;

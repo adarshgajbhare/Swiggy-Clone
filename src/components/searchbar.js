@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = ({ resData, setListOfRestaurant }) => {
+const Search = ({ resData, setFilteredListOfRestaurant }) => {
   console.log(resData);
 
   const [searchText, setSearchText] = useState("");
@@ -11,7 +11,7 @@ const Search = ({ resData, setListOfRestaurant }) => {
     );
 
     console.log(searchFilterList);
-    setListOfRestaurant(searchFilterList);
+    setFilteredListOfRestaurant(searchFilterList);
   };
 
   const topRated = () => {
@@ -20,7 +20,7 @@ const Search = ({ resData, setListOfRestaurant }) => {
     });
     console.log("top rated" + topRatedList);
 
-    setListOfRestaurant(topRatedList);
+    setFilteredListOfRestaurant(topRatedList);
   };
 
   const lowRated = () => {
@@ -28,7 +28,7 @@ const Search = ({ resData, setListOfRestaurant }) => {
       return restaurant.info.avgRating < 4;
     });
     console.log("low rated" + lowRatedList);
-    setListOfRestaurant(lowRatedList);
+    setFilteredListOfRestaurant(lowRatedList);
   };
   
   return (

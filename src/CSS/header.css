@@ -479,4 +479,33 @@ img{
   input:checked + .toggle .star--6 {
     transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
-   
+  .loader {
+    width: 29px;
+    height: 29px;
+    position: relative;
+    transform: rotate(45deg);
+  }
+  
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50% 50% 0 50%;
+    background: #0000;
+    background-image: radial-gradient(circle 11.2px at 50% 50%,#0000 94%, #ff4747);
+  }
+  
+  .loader:after {
+    animation: pulse-ytk0dhmd 1s infinite;
+    transform: perspective(336px) translateZ(0px);
+  }
+  
+  @keyframes pulse-ytk0dhmd {
+    to {
+      transform: perspective(336px) translateZ(168px);
+      opacity: 0;
+    }
+  }
+    
+  

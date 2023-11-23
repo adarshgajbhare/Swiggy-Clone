@@ -5,10 +5,7 @@ const AddToCartButton = () => {
 
   const handleClick = () => {
     setAdded(true);
-
-    // Add logic for handling the "Add to cart" action here
-
-    // Simulate the added state for 2 seconds
+     
     setTimeout(() => {
       setAdded(false);
     }, 2000);

@@ -1,4 +1,4 @@
-
+/* 
 .nav-item>ul {
     list-style-type: none;
     display: flex;
@@ -22,13 +22,6 @@
     justify-content: space-around;
 }
 
-
-/* .nav-item>ul>li {
-    list-style-type: none;
-
-} */
-
-
 .logo-image{
     width: 150px;
     height: 90px;
@@ -37,4 +30,4 @@
     top: 8px;
     left: -30px;
     margin-right: auto;
-}
+} */
