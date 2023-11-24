@@ -7,10 +7,19 @@ import {
   NANDED_API,
   PUNE_API,
 } from "../utils/constants";
-import React from "react";
-import location from "../utils/location-sign-svgrepo-com.png";
+import React, { useState, useEffect , useRef } from "react";
+import "../CSS/style.css";
 
 const Header = ({ onAPIKeyChange }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const handleToggleClick = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+
+    // Update the body background color based on the current mode
+    document.body.style.backgroundColor = isDarkMode ? "#d4a373" : "#11151c";
+  };
+
   return (
     <header className="menu__wrapper">
       <div className="menu__bar">
@@ -21,7 +30,7 @@ const Header = ({ onAPIKeyChange }) => {
           <ul className="navigation hide">
             <li>
               <button>
-                <div class="loader"></div> 
+                <div className="loader"></div>
                 Location
                 <svg
                   aria-hidden="true"
@@ -137,9 +146,9 @@ const Header = ({ onAPIKeyChange }) => {
         </nav>
       </div>
 
-      <div className="toggleWrapper">
+      <div className="toggleWrapper" onClick={handleToggleClick}>
         <input type="checkbox" className="dn" id="dn" />
-        <label htmlFor="dn" className="toggle">
+        <label htmlFor="dn" className="toggle" onClick={handleToggleClick}>
           <span className="toggle__handler">
             <span className="crater crater--1"></span>
             <span className="crater crater--2"></span>
