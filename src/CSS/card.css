@@ -4,6 +4,8 @@
     gap: 0px;
     padding: 10px   ;
     overflow-x: hidden;
+   min-height: 475px;
+
 }
 .imgb {
     /* background-image:url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
@@ -24,20 +26,31 @@
     background-size: cover;
     overflow: hidden;
     transform: scale(0.9);
+    z-index: 1;
 }
-.card:hover .add-to-cart-button{
+.card:hover .add-to-cart-button  {
    visibility: visible;
-   z-index: 999;
+      z-index: 0;
+  
 }
 .add-to-cart-button {
-    filter: none; /* Remove the filter effect on the add to cart button */
+    filter: none; 
+    z-index: 0;
+    visibility: hidden;/* Remove the filter effect on the add to cart button */
   }
+
   
 .card:hover .card-details{
     transform:translateY(101%);
     
 }
+.card  .imgb:hover  {
+    cursor: pointer;
+   overflow: hidden;
+   transition: 0.7s ease-in-out;
+    filter:brightness(60%)
 
+}
 .card-details {
     border-radius: 15px;
     backdrop-filter: blur(35px) saturate(200%);
@@ -58,11 +71,8 @@
     
 }
 
-.card .imgb:hover  {
-    cursor: pointer;
-   overflow: hidden;
-    filter:brightness(60%)
-}
+
+
 .name {
     
     font-weight: 700;
@@ -144,9 +154,7 @@
 }
 
 .star-icon-container {
-    margin-right: 5px;
-
-   
+    margin-right: 5px;  
 }
 
 .rating-text {
@@ -154,4 +162,14 @@
     position: relative;
     bottom: 2px;
 }
+@media screen and (max-width: 800px) {
+    .res-container {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        overflow-x: hidden;
+        flex-wrap: wrap;
+    }
 
+    /* Include any styles specific to the mobile layout here */
+}

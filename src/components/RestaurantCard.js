@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { CARD_IMG } from "../utils/constants";
 import AddToCartButton from "./AddToCartButton";
+import Shimmer from "./AddToCartButton"
 const RestaurantCard = ({ resData }) => {
+
+
   const {
     name,
     cuisines,
@@ -12,9 +16,7 @@ const RestaurantCard = ({ resData }) => {
 
  const cardStyle = {
   backgroundImage: `url(${cloudinaryImageId ? CARD_IMG + cloudinaryImageId : ''})`,
-  // backgroundPosition: "center",
-  // backgroundSize: "cover",
-  // backgroundRepeat: "no-repeat",
+
 };
 
 const move = () =>{

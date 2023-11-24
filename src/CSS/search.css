@@ -93,13 +93,13 @@
   display: inline-block;
   overflow: hidden;
 }
+
+
 .rate-btn {
-  border: none;
-  background: #fc8019;
-  border-radius: 30px;
-  padding: 10px 10px;
-  transition: 0.5s ease;
-  margin: 10px;
+ 
+  margin-right: 10px; 
+ 
+  padding: 0;
   
 }
 

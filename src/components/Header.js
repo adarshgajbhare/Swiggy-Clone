@@ -7,31 +7,57 @@ import {
   NANDED_API,
   PUNE_API,
 } from "../utils/constants";
-import React, { useState, useEffect , useRef } from "react";
+import React, { useState  } from "react";
 import "../CSS/style.css";
+import { Link } from "react-router-dom";
 
 const Header = ({ onAPIKeyChange }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggleClick = () => {
     setIsDarkMode((prevMode) => !prevMode);
-
-    // Update the body background color based on the current mode
+   
     document.body.style.backgroundColor = isDarkMode ? "#d4a373" : "#11151c";
   };
 
   return (
     <header className="menu__wrapper">
       <div className="menu__bar">
-        <a href="#" title="Home" aria-label="home" className="logo">
+        <Link to="/" title="Home" aria-label="home" className="logo">
           <img src={logo} alt="" />
-        </a>
+        </Link>
         <nav>
           <ul className="navigation hide">
+            
+            <li>
+              <Link to="/home" title="home">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/offers" title="offers"  >
+                Offers
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" title="contact">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/cart" title="cart">
+                Cart
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" title="about">
+                About
+              </Link>
+            </li>
             <li>
               <button>
                 <div className="loader"></div>
-                Location
+                <p id="xyz"> Location</p> 
                 <svg
                   aria-hidden="true"
                   height="16"
@@ -117,31 +143,6 @@ const Header = ({ onAPIKeyChange }) => {
                 </div>
               </div>
             </li>
-            <li>
-              <a href="#home" title="home">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#offers" title="offers">
-                Offers
-              </a>
-            </li>
-            <li>
-              <a href="#help" title="help">
-                Help
-              </a>
-            </li>
-            <li>
-              <a href="#cart" title="cart">
-                Cart
-              </a>
-            </li>
-            <li>
-              <a href="#about" title="about">
-                About
-              </a>
-            </li>
           </ul>
         </nav>
       </div>
@@ -163,11 +164,11 @@ const Header = ({ onAPIKeyChange }) => {
         </label>
       </div>
       <div className="action-buttons hide">
-        <a href="#log-in" title="Log in" className="secondary">
+        {/* <a href="#log-in" title="Log in" className="secondary">
           Log In
-        </a>
-        <a href="#sign-up" title="Sign up" className="primary">
-          Sign up
+        </a> */}
+        <a href="#sign-up" title="Log In" className="primary">
+        Log In
         </a>
       </div>
       <button aria-label="Open menu" className="burger-menu" type="button">

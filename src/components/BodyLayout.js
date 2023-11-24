@@ -2,56 +2,59 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Search from "./searchbar";
 import Shimmer from "./Shimmer";
-import { MUMBAI_API } from "../utils/constants";
+
+import { Link } from "react-router-dom";
 const BodyLayout = ({ api }) => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
-  const [filteredListOfRestaurant, setFilteredListOfRestaurant] =useState ([]);
+  const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [prevApi, setPrevApi] = useState(null);
 
   useEffect(() => {
-    fetchData();
-  }, [api]);
+   
+    if (prevApi !== api) {
+      setPrevApi(api);
+      setLoading(true); // Set loading to true when the API changes
+      fetchData();
+    }
+  }, [api, prevApi]);
 
   const checkJsonData = (jsonData) => {
     const allRestaurantsData = [];
-  
+
     for (let i = 0; i < jsonData?.data?.cards.length; i++) {
       const restaurantsData =
         jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-  
+
       if (restaurantsData !== undefined) {
         restaurantsData.forEach((restaurant) => {
           const id = restaurant?.info?.id;
-  
-          // Check if the ID is not already in the array before pushing
+
           if (id && !allRestaurantsData.some((item) => item.info.id === id)) {
             allRestaurantsData.push(restaurant);
           }
         });
       }
     }
-  
+
     return allRestaurantsData;
   };
-  
 
   const fetchData = async () => {
     try {
       const data = await fetch(api);
-
       const json = await data.json();
 
       console.log(json);
-      
+
       if (json) {
         const APIFetchedData = await checkJsonData(json);
-        
-        setListOfRestaurant(APIFetchedData.flat()); // flatten the array of arrays\
 
+        setListOfRestaurant(APIFetchedData.flat());
         setFilteredListOfRestaurant(APIFetchedData.flat());
-
+        setLoading(false); // Set loading to false after data is fetched
         console.log("data fetched successfully!!!!!");
-
       } else {
         console.log("No data fetched from API");
       }
@@ -60,12 +63,7 @@ const BodyLayout = ({ api }) => {
     }
   };
 
-  // conditional Rendering other way shown below with ternary opertaor
-  // if (listOfRestaurant.length === 0) {
-  //   return <Shimmer />;
-  // }
-
-  return listOfRestaurant.length === 0 ? (
+  return loading ? (
     <Shimmer />
   ) : (
     <div className="body">

@@ -26,7 +26,8 @@
   "dependencies": {
     "@parcel/transformer-js": "^2.10.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
   },
   "browserslist": [
     "last 2 version"

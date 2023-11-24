@@ -6,11 +6,15 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
   const [searchText, setSearchText] = useState("");
 
   const searchFilter = () => {
-    const searchFilterList = resData.filter((restaurant) =>
-      restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+    const searchFilterList =  resData.filter((restaurant) =>
+      restaurant.info.name.toLowerCase().includes(searchText.toLowerCase() )
     );
 
     console.log(searchFilterList);
+    if(searchFilter.length === 0){
+
+      
+    }
     setFilteredListOfRestaurant(searchFilterList);
   };
 
@@ -35,19 +39,15 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
     <div className="container search">
       <div className="subscribe rate-btn">
         <button className="btn" onClick={topRated}>
-          <i className="fa-solid fa-bolt icon"></i>
-          <i className="fa-regular fa-circle-check icon2"></i>
           <a href="#" className="btn-text">
-            Top Restaurant
+            Top Rated
           </a>
         </button>
       </div>
       <div className="subscribe rate-btn">
         <button className="btn" onClick={lowRated}>
-          <i className="fa-solid fa-bolt icon"></i>
-          <i className="fa-regular fa-circle-check icon2"></i>
           <a href="#" className="btn-text">
-            Low Restaurant
+            Low Rated
           </a>
         </button>
       </div>

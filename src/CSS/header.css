@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
 }
-
+ 
 .logo {
     cursor: pointer;
     display: flex;
@@ -65,7 +65,8 @@
 
 .navigation>li>a {
     color: var(--link-gray);
-    font-size: 14px;
+    font-size: 1.2rem;
+    font-weight: 500;
     text-decoration: none;
 }
 
@@ -134,14 +135,19 @@
 /* dropdown menu */
 .dropdown__wrapper {
     position: absolute;
-    top: 0px;
+    top: -8px;
     left: 0px;
-    padding-top: 60px;
+    padding-top: 55px;
+    margin-left: 20px;
+
 }
 
 .dropdown {
     border-radius: 8px;
-    background-color: var(--white);
+    /* backdrop-filter: blur(35px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.5); */
+   
+    background-color: black;
     display: none;
     padding: 8px;
     width: 100%;
@@ -152,25 +158,37 @@
         0 30px 60px -30px rgba(0, 0, 0, .15);
     z-index: 2;
     animation: fadeIn 0.2s ease-in-out;
+    flex-direction: column; /* Change from row to column */
+  align-items: flex-end; /* Align items to the right */ 
+  position: relative;
+  top: -60px;  
+  left: 140px;
 }
 
 .list-items-with-description {
     list-style-type: none;
-    display: grid;
+   
     width: 100%;
     grid-template-columns: 1fr 1fr;
+      /* ... (other styles) */
+  display: flex; /* Change from grid to flex */
+  flex-direction: row; /* Change from row to column */
+  align-items: flex-end; /* Align items to the right */
+ 
 }
 
 .list-items-with-description li {
     display: flex;
-    padding: 8px;
+    padding: 10px;
     gap: 16px;
     width: 100%;
 }
 
 .list-items-with-description li:hover {
-    background-color: var(--secondary-background);
+  backdrop-filter: blur(35px) saturate(200%);
+  background-color: rgba(255, 255, 255, 0.5);
     border-radius: 6px;
+ 
 }
 
 .list-items-with-description li svg {
@@ -187,9 +205,11 @@
 }
 
 .item-title p {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
     white-space: nowrap;
-    color: var(--link-gray);
+    color: white;
+
 }
 
 /* login sign-up buttons */
@@ -216,15 +236,18 @@
     background: var(--secondary-background);
 }
 
-.primary {
+.action-buttons .primary {
     color: var(--white);
-    border-radius: 6px;
+    border-radius: 10px;
     background-color: var(--primary);
-    padding: 8px 16px;
+    padding: 15px 24px;
+    font-weight: 600;
+    font-size: 1.3rem;
+
 }
 
 .primary:hover {
-    background-color: var(--primary-hover);
+    background-color: orange;
 }
 
 .burger-menu {
@@ -269,14 +292,15 @@ img{
     position: relative;
     left: 15px;
 }
-
+ /* code for dark light mode */
 .toggleWrapper {
     position: absolute;
-    top: 4.5%;
+    top: 1%;
     left:86%; /* Adjust the left position as needed */
     overflow: hidden;
     transform: translate3d(-50%, -50%, 0);
     color: white;
+    transform : scale(0.9);
   }
   .action-buttons {
     display: flex;
@@ -479,11 +503,18 @@ img{
   input:checked + .toggle .star--6 {
     transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
+  /* above code for dark and light mode switch  */
+
+#xyz{
+  font-size: 1.25em;
+  font-weight: 600;
+}
+  /* for location  icon */
   .loader {
-    width: 29px;
-    height: 29px;
-    position: relative;
+    width: 28px;
+    height: 28px;
     transform: rotate(45deg);
+  
   }
   
   .loader:before,
@@ -497,15 +528,47 @@ img{
   }
   
   .loader:after {
-    animation: pulse-ytk0dhmd 1s infinite;
+    animation: pulse-location 1s infinite;
     transform: perspective(336px) translateZ(0px);
   }
   
-  @keyframes pulse-ytk0dhmd {
+  @keyframes pulse-location {
     to {
-      transform: perspective(336px) translateZ(168px);
+      transform: perspective(336px) translateZ(100px);
       opacity: 0;
     }
   }
+  @media (max-width: 800px) {
+    .navigation {
+        display: none; /* Hide the navigation links by default on smaller screens */
+    }
+
+    .burger-menu {
+        display: flex; /* Show the hamburger menu */
+    }
+
+    .burger-menu svg {
+        height: 20px;
+        stroke: var(--link-gray);
+        width: 20px;
+    }
     
-  
+    .burger-menu.open .navigation {
+        display: flex; /* Show the navigation links when the hamburger menu is open */
+        flex-direction: column;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--background);
+    }
+
+    .burger-menu.open .navigation > li {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .burger-menu.open .navigation > li > button {
+        width: 100%;
+    }
+}
