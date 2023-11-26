@@ -1,45 +1,36 @@
 import { useEffect } from "react";
 import { CARD_IMG } from "../utils/constants";
 import AddToCartButton from "./AddToCartButton";
-import Shimmer from "./AddToCartButton"
+import Shimmer from "./AddToCartButton";
 const RestaurantCard = ({ resData }) => {
+  const { name, cuisines, avgRating, sla, cloudinaryImageId, costForTwo } =
+    resData || {};
 
+  const cardStyle = {
+    backgroundImage: `url(${
+      cloudinaryImageId ? CARD_IMG + cloudinaryImageId : ""
+    })`,
+  };
 
-  const {
-    name,
-    cuisines,
-    avgRating,
-    sla,
-    cloudinaryImageId,
-    costForTwo,
-  } = resData || {};
-
- const cardStyle = {
-  backgroundImage: `url(${cloudinaryImageId ? CARD_IMG + cloudinaryImageId : ''})`,
-
-};
-
-const move = () =>{
-  console.log("cliked");
-}
   return (
-    
     <div className="res-container">
-      <div className="card"onMouseMove={move}>
-        <div className="imgb" style={cardStyle} >
-          
-        </div>
-        <AddToCartButton/>
+      <div className="card">
+        <div className="imgb" style={cardStyle}></div>
+        <AddToCartButton />
         <div className="card-details">
           <div className="bar"> </div>
           <p className="name">{name}</p>
-          <p className="cuisines">{cuisines && cuisines.length > 0 ? cuisines.join(", ").split(",")[0] : "N/A"}</p>
+          <p className="cuisines">
+            {cuisines && cuisines.length > 0
+              ? cuisines.join(", ").split(",")[0]
+              : "N/A"}
+          </p>
           <p className="costForTwo">
-           {costForTwo.split(' ')[0]} <span className="cost">for two</span>{" "}
+            {costForTwo.split(" ")[0]} <span className="cost">for two</span>{" "}
           </p>
           <p className="rating other">
             <span className="star-icon-container">
-            <svg
+              <svg
                 width="20"
                 height="20"
                 viewBox="0 0 20 20"
@@ -78,7 +69,10 @@ const move = () =>{
           </p>
           {/* <p className="other">Delivery In {sla?.slaString.split(' ')[0]} Minutes </p> */}
 
-          <p className="other">{sla?.lastMileTravelString}, {sla?.slaString.split(' ')[0]} mins delivery time </p>
+          <p className="other">
+            {sla?.lastMileTravelString}, {sla?.slaString.split(" ")[0]} mins
+            delivery time{" "}
+          </p>
         </div>
       </div>
     </div>

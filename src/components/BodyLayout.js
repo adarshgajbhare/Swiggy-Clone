@@ -2,16 +2,17 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Search from "./searchbar";
 import Shimmer from "./Shimmer";
-
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const BodyLayout = ({ api }) => {
+
+
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
   const [loading, setLoading] = useState(true);
   const [prevApi, setPrevApi] = useState(null);
 
   useEffect(() => {
-   
     if (prevApi !== api) {
       setPrevApi(api);
       setLoading(true); // Set loading to true when the API changes
@@ -79,10 +80,10 @@ const BodyLayout = ({ api }) => {
       <div className="res-container">
         {filteredListOfRestaurant &&
           filteredListOfRestaurant.map((restaurants) => (
-            <RestaurantCard
-              key={restaurants?.info?.id}
-              resData={restaurants?.info}
-            />
+            <Link key={restaurants?.info?.id} to={"/menu/"+ restaurants?.info?.id} >
+              {" "}
+              <RestaurantCard resData={restaurants?.info} />{" "}
+            </Link>
           ))}
       </div>
     </div>

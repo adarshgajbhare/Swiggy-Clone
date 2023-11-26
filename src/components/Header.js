@@ -7,7 +7,7 @@ import {
   NANDED_API,
   PUNE_API,
 } from "../utils/constants";
-import React, { useState  } from "react";
+import React, { useState } from "react";
 import "../CSS/style.css";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const Header = ({ onAPIKeyChange }) => {
 
   const handleToggleClick = () => {
     setIsDarkMode((prevMode) => !prevMode);
-   
+
     document.body.style.backgroundColor = isDarkMode ? "#d4a373" : "#11151c";
   };
 
@@ -28,14 +28,13 @@ const Header = ({ onAPIKeyChange }) => {
         </Link>
         <nav>
           <ul className="navigation hide">
-            
             <li>
               <Link to="/home" title="home">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/offers" title="offers"  >
+              <Link to="/offers" title="offers">
                 Offers
               </Link>
             </li>
@@ -57,7 +56,7 @@ const Header = ({ onAPIKeyChange }) => {
             <li>
               <button>
                 <div className="loader"></div>
-                <p id="xyz"> Location</p> 
+                <p id="xyz"> Location</p>
                 <svg
                   aria-hidden="true"
                   height="16"
@@ -76,7 +75,6 @@ const Header = ({ onAPIKeyChange }) => {
                         <p
                           onClick={() => {
                             onAPIKeyChange(PUNE_API);
-                            console.log("api changed to pune");
                           }}
                         >
                           Pune
@@ -88,7 +86,6 @@ const Header = ({ onAPIKeyChange }) => {
                         <p
                           onClick={() => {
                             onAPIKeyChange(MUMBAI_API);
-                            console.log("api changed to mumbai");
                           }}
                         >
                           Mumbai
@@ -100,7 +97,6 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(BANGALORE_API);
-                          console.log("api changed to BANGALORE");
                         }}
                       >
                         <p>Bangalore</p>
@@ -111,7 +107,6 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(NANDED_API);
-                          console.log("api changed to Nanded");
                         }}
                       >
                         <p>Nanded</p>
@@ -122,7 +117,6 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(DELHI_API);
-                          console.log("api changed to Nanded");
                         }}
                       >
                         <p>Delhi</p>
@@ -133,7 +127,6 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(HYDERABAD_API);
-                          console.log("api changed to Nanded");
                         }}
                       >
                         <p>Hyderabad</p>
@@ -168,7 +161,7 @@ const Header = ({ onAPIKeyChange }) => {
           Log In
         </a> */}
         <a href="#sign-up" title="Log In" className="primary">
-        Log In
+          Log In
         </a>
       </div>
       <button aria-label="Open menu" className="burger-menu" type="button">

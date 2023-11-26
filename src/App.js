@@ -9,33 +9,33 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
 } from "react-router-dom";
 import RouterError from "./components/RouterError";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Offers from "./components/Offers";
+import { createContext } from "react";
+import { createContext, useContext } from "react";
+import ResMenu from "./components/RestaurantMenus";
 
 const App = () => {
   const [api, setAPI_KEY] = useState(PUNE_API);
 
   const handleAPIKeyChange = (newAPIKey) => {
-    console.log("API Key changed to:", newAPIKey);
-
     setAPI_KEY(newAPIKey);
   };
-
   return (
     <div className="app">
-      
-      <BrowserRouter >
-      <Header onAPIKeyChange={handleAPIKeyChange} />
+      <BrowserRouter>
+        <Header onAPIKeyChange={handleAPIKeyChange} />
         <Routes>
           <Route path="/" element={<BodyLayout api={api} />}>
-            
             {"/"}
           </Route>
           <Route path="/home" element={<BodyLayout api={api} />}>
-            
             {"/"}
           </Route>
           <Route path="/about" element={<About />}></Route>
@@ -43,9 +43,12 @@ const App = () => {
           <Route path="/offers" element={<Offers />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/about" element={<About />}></Route>
-          {/* <Outlet/> */}
+
+          <Route path="/menu/:resId" element={<ResMenu />} />
         </Routes>
+        {/* <Outlet /> */}
       </BrowserRouter>
+
       <Footer />
     </div>
   );
@@ -53,44 +56,38 @@ const App = () => {
 
 // const appRoute = createBrowserRouter([
 //   {
-//       path : "/",
-//       element : <App/>,
-//       errorElement : <RouterError/>,
-//       children:[
-//       //   {
-//       //     path : "/",
-//       //     element : <BodyLayout api={api} />,
-
-//       // },
-//       //   {
-//       //     path : "/home",
-//       //     element : <BodyLayout api={api} />,
-
-//       // },
-//         {
-//           path : "/about",
-//           element : <About/>,
+//     path: "/",
+//     element: <App />,
+//     errorElement: <RouterError />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <BodyLayout />,
 //       },
 //       {
-//         path : "/contact",
-//         element : <Contact/>,
-
+//         path: "/home",
+//         element: <BodyLayout />,
 //       },
 //       {
-//         path : "/cart",
-//         element : <Cart/>,
-
+//         path: "/about",
+//         element: <About />,
 //       },
 //       {
-//         path : "/offers",
-//         element : <Offers/>,
-
+//         path: "/contact",
+//         element: <Contact />,
 //       },
-//       ],
+//       {
+//         path: "/cart",
+//         element: <Cart />,
+//       },
+//       {
+//         path: "/offers",
+//         element: <Offers />,
+//       },
+//     ],
 //   },
-
-//  ])
+// ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// root.render(<RouterProvider router={appRoute}/>);
+// root.render(<RouterProvider router={appRoute} />);
 root.render(<App />);
