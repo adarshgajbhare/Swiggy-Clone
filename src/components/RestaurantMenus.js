@@ -31,7 +31,7 @@ const RestaurantMenus = () => {
       <h3>{sla?.lastMileTravelString} </h3>
       <h3>{avgRating} </h3>
       <h3>{city} </h3>
-      <h3>{avgRating} </h3>
+     
     </div>
   );
 };
