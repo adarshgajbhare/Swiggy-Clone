@@ -1,0 +1,88 @@
+/* 
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-text-size-adjust: none;
+    outline: none;
+} */
+
+.styles_divider__2JelH {
+    border-bottom: 0.5px solid #d3d3d3;
+    height: 0.5px;
+    margin: 20px 0;
+}
+
+.hotel-info{
+    position: relative;
+    border: 1px solid blue;
+    height: 200px;
+    top: 20px;
+    left: 30%;
+    border-radius: 15px;
+    
+    width: 30%;
+    height: 30%;
+}
+
+.hotel-name {
+    font-size: 1.43rem;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+
+.hotel-cuisines , .distance , .hotel-city{
+    font-size: .93rem;
+    color: #7e808c;
+    height: calc(0.93rem + 2px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.res-menu-container{
+    background-color: white;
+    height: 101%;
+    height: 100%;
+
+}
+.hotel-container{
+    margin: 0 16px;
+    background-color: red;
+    backdrop-filter: blur(35px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.recommended-menu{
+    position: relative;
+
+ width: 50%;
+    top: 38px;
+    left: 30%;
+}
+
+.food-img{
+   position: relative;
+   right: -101px;
+}
+
+.menu-item-img {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    left: 574px;
+    top: -47px;
+}
+
+.rec-name {
+    margin-right: 4px;
+    font-size: 1.22rem;
+    font-weight: 500;
+    color: #3e4152;
+    word-break: break-word;
+}

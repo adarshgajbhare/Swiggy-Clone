@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { CARD_IMG } from "../utils/constants";
 import AddToCartButton from "./AddToCartButton";
-import Shimmer from "./AddToCartButton";
 const RestaurantCard = ({ resData }) => {
   const { name, cuisines, avgRating, sla, cloudinaryImageId, costForTwo } =
     resData || {};
@@ -37,8 +35,8 @@ const RestaurantCard = ({ resData }) => {
                 fill="none"
                 role="img"
                 aria-hidden="true"
-                strokecolor="rgba(2, 6, 12, 0.92)"
-                fillcolor="rgba(2, 6, 12, 0.92)"
+                strokeColor="rgba(2, 6, 12, 0.92)"
+                fillColor="rgba(2, 6, 12, 0.92)"
               >
                 <circle
                   cx="10"
