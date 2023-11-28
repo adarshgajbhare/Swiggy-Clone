@@ -2,10 +2,10 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Search from "./searchbar";
 import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
+import { useOutlet, useOutletContext, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-const BodyLayout = ({ api }) => {
-
+const BodyLayout = () => {
+  const api = useOutletContext();
 
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);

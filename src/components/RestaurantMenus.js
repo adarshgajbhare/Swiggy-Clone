@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 import { CARD_IMG } from "../utils/constants";
 const RestaurantMenus = () => {
   const [resMenu, setResMenu] = useState(null);
+  const [isExpanded, setExpanded] = useState(false);
 
   const { resId } = useParams();
   console.log(resId);
@@ -30,8 +31,16 @@ const RestaurantMenus = () => {
     resMenu?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
 
+
+      
+      const handleToggle = () => {
+        setExpanded(!isExpanded);
+      };
+
   return (
+    
     <div className="res-menu-container">
+      
       <div className="hotel-container">
         <div className="hotel-info">
           <h1 className="hotel-name"> {name}</h1>
@@ -81,8 +90,12 @@ const RestaurantMenus = () => {
         </div>
       </div>
       <div class="styles_divider__2JelH"></div>
-      <h1>Recommended</h1>
-      <div class="styles_divider__2JelH"></div>
+      <div className="dropdown-header" onClick={handleToggle}>
+        <span className="icon">^</span>
+        Recommendation
+      </div>
+      {/* <div class="styles_divider__2JelH"></div> */}
+      {isExpanded && (
       <div className="recommended-menu">
         <div class="styles_divider__2JelH"></div>
         <ul>
@@ -108,6 +121,7 @@ const RestaurantMenus = () => {
           ))}
         </ul>
       </div>
+       )}
     </div>
   );
 };

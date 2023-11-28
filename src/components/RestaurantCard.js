@@ -35,8 +35,8 @@ const RestaurantCard = ({ resData }) => {
                 fill="none"
                 role="img"
                 aria-hidden="true"
-                strokeColor="rgba(2, 6, 12, 0.92)"
-                fillColor="rgba(2, 6, 12, 0.92)"
+                strokecolor="rgba(2, 6, 12, 0.92)"
+                fillcolor="rgba(2, 6, 12, 0.92)"
               >
                 <circle
                   cx="10"

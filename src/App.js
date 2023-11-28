@@ -17,8 +17,6 @@ import RouterError from "./components/RouterError";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Offers from "./components/Offers";
-import { createContext } from "react";
-import { createContext, useContext } from "react";
 import ResMenu from "./components/RestaurantMenus";
 
 const App = () => {
@@ -29,9 +27,9 @@ const App = () => {
   };
   return (
     <div className="app">
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Header onAPIKeyChange={handleAPIKeyChange} />
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<BodyLayout api={api} />}>
             {"/"}
           </Route>
@@ -45,49 +43,53 @@ const App = () => {
           <Route path="/about" element={<About />}></Route>
 
           <Route path="/menu/:resId" element={<ResMenu />} />
-        </Routes>
-        {/* <Outlet /> */}
-      </BrowserRouter>
+        </Routes> */}
+        <Outlet context={api}  />
+      {/* </BrowserRouter> */}
 
       <Footer />
     </div>
   );
 };
 
-// const appRoute = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     errorElement: <RouterError />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <BodyLayout />,
-//       },
-//       {
-//         path: "/home",
-//         element: <BodyLayout />,
-//       },
-//       {
-//         path: "/about",
-//         element: <About />,
-//       },
-//       {
-//         path: "/contact",
-//         element: <Contact />,
-//       },
-//       {
-//         path: "/cart",
-//         element: <Cart />,
-//       },
-//       {
-//         path: "/offers",
-//         element: <Offers />,
-//       },
-//     ],
-//   },
-// ]);
+const appRoute = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <RouterError />,
+    children: [
+      {
+        path: "/",
+        element: <BodyLayout />,
+      },
+      {
+        path: "/home",
+        element: <BodyLayout />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/offers",
+        element: <Offers />,
+      },
+      {
+        path : "/menu/:resId",
+         element :  <ResMenu />,
+      },
+    ],
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// root.render(<RouterProvider router={appRoute} />);
-root.render(<App />);
+root.render(<RouterProvider router={appRoute} />);
+// root.render(<App />);
