@@ -14,7 +14,12 @@ html {
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    position: relative;
+    min-height: 100%;
 }
+
+
+
 
 /* Remove default margin in favour of better control in authored CSS */
 body,
@@ -42,9 +47,8 @@ body {
     line-height: 1.5;
     font-family: 'Inter Tight', sans-serif;
     background-color:#d4a373 ;
-   
-    background-size: cover;
-    background-attachment: fixed;
+    margin: 0 0 100px;
+  
     overflow-x: hidden;
     
 }

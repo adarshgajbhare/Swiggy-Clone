@@ -5,6 +5,7 @@ const Footer = () =>{
     return(
 
 
+      <div className="footer-parent">
       <div className="social-buttons">
         <div className="credit">
       <p>   Made with ❤️ by Adarsh Gajbhare & Aniruddha Deshmukh</p>
@@ -48,6 +49,7 @@ const Footer = () =>{
       </a>
    </div>
     </div>
+     </div>
     )
 }
 

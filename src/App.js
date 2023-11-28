@@ -18,6 +18,7 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Offers from "./components/Offers";
 import ResMenu from "./components/RestaurantMenus";
+import Splash from "./components/Splash";
 
 const App = () => {
   const [api, setAPI_KEY] = useState(PUNE_API);
@@ -60,7 +61,7 @@ const appRoute = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <BodyLayout />,
+        element: <Splash />,
       },
       {
         path: "/home",

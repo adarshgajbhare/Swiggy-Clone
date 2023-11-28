@@ -1,3 +1,12 @@
+.footer-parent{
+ position: absolute;
+  left: 0;
+  bottom: 3vh;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
 .social-buttons {
   display: flex;
   justify-content: center;
@@ -7,11 +16,9 @@
   padding: 15px 10px;
   background-color: black;
   margin-bottom: 0%;
-  bottom: 0;
-  width: 100%;
-  z-index: 999;
 
 }
+
 
 .social-button {
   display: flex;

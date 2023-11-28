@@ -294,14 +294,16 @@ img{
 }
  /* code for dark light mode */
 .toggleWrapper {
-    position: absolute;
+    /* position: absolute; */
     top: 1%;
+    margin-left: 42rem;
     left:86%; /* Adjust the left position as needed */
     overflow: hidden;
     transform: translate3d(-50%, -50%, 0);
     color: white;
     transform : scale(0.9);
   }
+  
   .action-buttons {
     display: flex;
     gap: 8px;
