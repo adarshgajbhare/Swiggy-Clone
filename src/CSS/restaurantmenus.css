@@ -9,11 +9,11 @@ min-height: calc(100vh + 20px);
     border-radius: 1rem;
     padding: .6rem;
 }
-.styles_divider__2JelH {
+/* .styles_divider__2JelH {
     border-bottom: 0.5px solid #d3d3d3;
     height: 0.5px;
     margin: 20px 0;
-}
+} */
 
 .res-menu-container {
     background-color: white;
@@ -66,24 +66,28 @@ li {
     margin-left: auto;
     color : white;
     box-shadow: 0 1px 5px #f9f9f9;
-    border-radius: 6px;
-    padding: 1rem;
+    padding: 1.2rem;
     margin-right: 1rem;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(255, 255, 255, 0.44);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 .info-rating {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 11px;
+    font-size: 1rem;
     color: #8b8d97;
     font-weight: 600;
     margin-left: 1rem;
 }
 
 .hotel-rating{
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 1.5rem;
     position: relative;
     bottom: 0.1rem;
 }
@@ -97,6 +101,7 @@ li {
 .time-cost{
     margin-left: 1rem;
     font-weight: bold;
+    margin-top: 1rem;
 
 }
 
@@ -119,20 +124,21 @@ li {
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
+    margin-bottom: 1.7rem;
 }
 .rec-heading:hover{
     cursor: pointer;
 }
 .down-icon:hover{
     cursor: pointer;
-}
+} 
 .down-icon{
     min-width: 1rem;
     min-height: 1rem;
     margin-left: auto;
     transition: 0.1s ease-in;
     font-weight: 700;
-}
+} 
  .down-icon:focus{
     transform: rotate(-180deg);
 }
@@ -146,10 +152,15 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow:  6px 6px 12px #949494,
+                 -6px -6px 12px #ffffff;
+    margin-bottom: 1.7rem;
 
 }
 .recommended-menu {
-   
+    
   }
   
   .food-img {
@@ -157,11 +168,13 @@ li {
    margin-left: auto;
    min-height: 96px;
    min-width: 116px;
-  transform: scale(1.5);
+  transform: scale(1.7);
+  top: 0.8rem;
   }
 .menu-item-img  {
     border-radius: 0.5rem;
-    box-shadow: 0 1px 4px 0px;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 16%), 0 4px 5px 0 rgb(0 0 0 / 11%), 0 1px 10px 0 rgb(0 0 0 / 10%);
+
   }
   .menu-d{
      margin-left: 1rem;
@@ -193,7 +206,7 @@ li {
 
   .add-btn{
     position: absolute;
-    color: #60b246;
+    color:  white;
     border: none;
     cursor: pointer;
     margin: 0;
@@ -202,12 +215,16 @@ li {
     border-radius: 0.2rem ;
     font-weight: 700;
     font-size: 0.5rem;
-    background-color: white;
+    background-color:#60b246;
     left: 25%;
     bottom: 15%;
     box-shadow: 0 1px 5px 0px;
     transition: 0.2s ease-out;
+
   }
+
   .add-btn:hover{
     box-shadow: 0 2px 20px 0px;
+    color: #60b246;
+    background-color: white;
   }

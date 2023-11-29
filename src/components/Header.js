@@ -56,7 +56,7 @@ const Header = ({ onAPIKeyChange }) => {
             <li>
               <button>
                 <div className="loader"></div>
-                <p id="xyz"> Location</p>
+                <p id="xyz">Location</p>
                 <svg
                   aria-hidden="true"
                   height="16"
@@ -187,3 +187,4 @@ const Header = ({ onAPIKeyChange }) => {
 };
 
 export default Header;
+  

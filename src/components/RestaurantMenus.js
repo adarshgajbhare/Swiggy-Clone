@@ -126,9 +126,6 @@ const RestaurantMenus = () => {
         </svg>
         <span className="text-tc tx1">{costForTwoMessage}</span>
       </div>
-
-      <div className="styles_divider__2JelH"></div>
-
       <div className="dropdown-header" onClick={handleToggle}>
         <div className="rec-heading" >
           <h2>Recommended</h2>{" "}
@@ -144,14 +141,14 @@ const RestaurantMenus = () => {
             <path
               d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
               stroke="#141B34"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
       </div>
-      <div class="main_border__1Cc4a"></div>
+      
 
       {isExpanded && (
         <div className="recommended-menu">
@@ -179,7 +176,7 @@ const RestaurantMenus = () => {
                   </div>
                   
                 </div>
-                <div className="styles_divider__2JelH"></div>
+             
               </li>
             ))}
           </ul>
