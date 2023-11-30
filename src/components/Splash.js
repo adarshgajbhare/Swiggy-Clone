@@ -25,10 +25,10 @@ const Splash = () => {
           </div>
         )}
         <button className="btn-splash" >
-          <a href="/home">Get food in 30 minutes!</a>
+          <Link to="/home">Get food in 30 minutes!</Link>
         </button>
         <button className="btn-next"onClick={applyHoverEffect} >
-          <a href="#">next</a>
+          <Link to="#">next</Link>
         </button>
       </div>
     </div>
