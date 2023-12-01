@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ onAPIKeyChange }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const [locationName, setLocationName] = useState("Pune");
   const handleToggleClick = () => {
     setIsDarkMode((prevMode) => !prevMode);
 
@@ -23,7 +23,7 @@ const Header = ({ onAPIKeyChange }) => {
   return (
     <header className="menu__wrapper">
       <div className="menu__bar">
-        <Link to="/" title="Home" aria-label="home" className="logo">
+        <Link to="home" title="Home" aria-label="home" className="logo">
           <img src={logo} alt="" />
         </Link>
         <nav>
@@ -56,7 +56,7 @@ const Header = ({ onAPIKeyChange }) => {
             <li>
               <button>
                 <div className="loader"></div>
-                <p id="xyz">Location</p>
+                <p id="xyz">{locationName}</p>
                 <svg
                   aria-hidden="true"
                   height="16"
@@ -72,24 +72,32 @@ const Header = ({ onAPIKeyChange }) => {
                   <ul className="list-items-with-description">
                     <li>
                       <div className="item-title">
-                        <p
-                          onClick={() => {
-                            onAPIKeyChange(PUNE_API);
-                          }}
-                        >
-                          Pune
-                        </p>
+                        <Link to="home">
+                          {" "}
+                          <p
+                            onClick={() => {
+                              onAPIKeyChange(PUNE_API);
+                              setLocationName("pune");
+                            }}
+                          >
+                            Pune
+                          </p>
+                        </Link>
                       </div>
                     </li>
                     <li>
                       <div className="item-title">
-                        <p
-                          onClick={() => {
-                            onAPIKeyChange(MUMBAI_API);
-                          }}
-                        >
-                          Mumbai
-                        </p>
+                        <Link to="home">
+                          {" "}
+                          <p
+                            onClick={() => {
+                              onAPIKeyChange(MUMBAI_API);
+                              setLocationName("Mumbai");
+                            }}
+                          >
+                            Mumbai
+                          </p>{" "}
+                        </Link>
                       </div>
                     </li>
                     <li>
@@ -97,9 +105,13 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(BANGALORE_API);
+                          setLocationName("Bangalore");
                         }}
                       >
-                        <p>Bangalore</p>
+                        <Link to="home">
+                          {" "}
+                          <p>Bangalore</p>
+                        </Link>
                       </div>
                     </li>
                     <li>
@@ -107,9 +119,13 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(NANDED_API);
+                          setLocationName("Nanded");
                         }}
                       >
-                        <p>Nanded</p>
+                        <Link to="home">
+                          {" "}
+                          <p>Nanded</p>{" "}
+                        </Link>
                       </div>
                     </li>
                     <li>
@@ -117,9 +133,12 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(DELHI_API);
+                          setLocationName("Delhi");
                         }}
                       >
-                        <p>Delhi</p>
+                        <Link to="home">
+                          <p>Delhi</p>{" "}
+                        </Link>
                       </div>
                     </li>
                     <li>
@@ -127,9 +146,12 @@ const Header = ({ onAPIKeyChange }) => {
                         className="item-title"
                         onClick={() => {
                           onAPIKeyChange(HYDERABAD_API);
+                          setLocationName("Hyderabad");
                         }}
                       >
-                        <p>Hyderabad</p>
+                        <Link to="home">
+                          <p>Hyderabad</p>{" "}
+                        </Link>
                       </div>
                     </li>
                   </ul>
@@ -187,4 +209,3 @@ const Header = ({ onAPIKeyChange }) => {
 };
 
 export default Header;
-  

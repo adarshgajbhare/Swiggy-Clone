@@ -53,7 +53,7 @@ const RestaurantMenus = () => {
           <div className="hotel-info">
             <p className="hotel-name"> {name}</p>
             <p className="hotel-cuisines">{cuisines.join(", ")}</p>
-            <p className="hotel-city">{city} , </p>{" "}
+            <p className="hotel-city">{city}</p>{" "}
           </div>
 
           <div className="rating-box">
