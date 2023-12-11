@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { HYDERABAD_RES_MENU_API } from "../utils/constants";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { CARD_IMG } from "../utils/constants";
+import useRestaurantMenus from "../utils/useRestaurantMenus";
 const RestaurantMenus = () => {
-  const [resMenu, setResMenu] = useState(null);
   const [isExpanded, setExpanded] = useState(false);
   const [buttonText, setButtonText] = useState('ADD');
 
   const btnChange = () => {
     setButtonText('DONE');
   };
+  
   const { resId } = useParams();
-  console.log(resId);
-
-  useEffect(() => {
-    fetchResMenu();
-  }, []);
-
-  const fetchResMenu = async () => {
-    const data = await fetch(`${HYDERABAD_RES_MENU_API}/${resId}`);
-    const json = await data.json();
-
-    setResMenu(json?.data);
-    console.log(json);
-  };
+  const resMenu = useRestaurantMenus(resId);
 
   if (resMenu === null) return <Shimmer />;
 

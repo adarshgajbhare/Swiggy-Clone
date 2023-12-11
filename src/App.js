@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , lazy , Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import BodyLayout from "./components/BodyLayout";
 import Footer from "./components/Footer";
 import { PUNE_API } from "./utils/constants";
-import About from "./components/About";
+// import About from "./components/About";
 import {
   BrowserRouter,
   Routes,
@@ -20,7 +20,10 @@ import Offers from "./components/Offers";
 import ResMenu from "./components/RestaurantMenus";
 import Splash from "./components/Splash";
 
+const About = lazy(() => import("./components/About"))
+
 const App = () => {
+  
   const [api, setAPI_KEY] = useState(PUNE_API);
 
   const handleAPIKeyChange = (newAPIKey) => {
@@ -69,7 +72,7 @@ const appRoute = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback ={<h1>About Loading....</h1>}> <About /> </Suspense> ,
       },
       {
         path: "/contact",
