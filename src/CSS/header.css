@@ -70,9 +70,9 @@
     text-decoration: none;
 }
 
-.navigation>li>a:hover {
+/* .navigation>li>a:hover {
     color: var(--link-gray-hover);
-}
+} */
 
 .navigation>li>button {
     color: var(--link-gray);
@@ -309,8 +309,8 @@ img{
     gap: 8px;
     align-items: center;
     flex-wrap: nowrap;
-    margin-left: auto; /* Align the action-buttons to the right */
-  }
+    margin-left: auto; 
+  }n
   .toggleWrapper input {
     position: absolute;
     left: -99em;
@@ -526,7 +526,7 @@ img{
     inset: 0;
     border-radius: 50% 50% 0 50%;
     background: #0000;
-    background-image: radial-gradient(circle 11.2px at 50% 50%,#0000 94%, #ff4747);
+    background-image: radial-gradient(circle 11.2px at 50% 50%,#0000 94%, #fc8019);
   }
   
   .loader:after {
@@ -573,4 +573,32 @@ img{
     .burger-menu.open .navigation > li > button {
         width: 100%;
     }
+}
+/* Add your existing styles here */
+
+/* Styles for the dropdown */
+.dropdown-user {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle-user {
+  cursor: pointer;
+}
+
+.dropdown-user {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Show the dropdown menu when the button is hovered */
+.dropdown-user:hover .dropdown-user {
+  display: block;
 }

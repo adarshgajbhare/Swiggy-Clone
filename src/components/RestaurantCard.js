@@ -12,6 +12,7 @@ const RestaurantCard = ({ resData }) => {
 
   return (
     <div className="res-container">
+    
       <div className="card">
         <div className="imgb" style={cardStyle}></div>
         <AddToCartButton />
@@ -76,5 +77,15 @@ const RestaurantCard = ({ resData }) => {
     </div>
   );
 };
+//  the below code is not longer needed because swigy has removed the promoted tag
+// export const withPromotedLabel = () => {
+//   return (props) => {
+//     return (
+//       <div>
+//         <label className=" bg-gray-400 text-lg  text-red-600 ">Promoted</label>
+
+//         <RestaurantCard {...props} />
+//       </div>
+//     );  };};
 
 export default RestaurantCard;

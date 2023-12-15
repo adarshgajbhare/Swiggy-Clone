@@ -51,7 +51,7 @@ const App = () => {
         <Outlet context={api}  />
       {/* </BrowserRouter> */}
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

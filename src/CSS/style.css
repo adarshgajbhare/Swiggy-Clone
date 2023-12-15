@@ -46,7 +46,7 @@ body {
     min-height: 100vh;
     line-height: 1.5;
     font-family: 'Inter Tight', sans-serif;
-    background-color:#d4a373 ;
+    /* background-color:#d4a373 ; */
     margin: 0 0 100px;
   
     overflow-x: hidden;
