@@ -40,13 +40,13 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
 <div className=" flex justify-between items-center mr-12">
   <div className="flex text-white">
 
-  <button onClick={allRated} class=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+  <button onClick={allRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
   Popular
       </button>
-  <button onClick={topRated} class=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+  <button onClick={topRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
   Top Rated
       </button>
-  <button onClick={lowRated} class=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+  <button onClick={lowRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
   Low Rated
       </button>
 

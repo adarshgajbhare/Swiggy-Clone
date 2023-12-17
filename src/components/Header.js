@@ -6,15 +6,22 @@ import {
   NANDED_API,
   PUNE_API,
 } from "../utils/constants";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../CSS/style.css";
 import { Link } from "react-router-dom";
-
+import UserName from "./UserName";
+import { useSelector } from "react-redux";
+import appStore from "../store/appStore";
 
 const Header = ({ onAPIKeyChange }) => {
   const [locationName, setLocationName] = useState("Pune");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isLocationBarVisible, setIsLocationBarVisible] = useState(true);
+
+  const { loggedUser } = useContext(UserName);
+
+  const ItemCount = useSelector((store) => store.cart.items);
+  //console.log("@@@@@@@@@@@@" , {ItemCount})
 
   return (
     <header>
@@ -65,7 +72,7 @@ const Header = ({ onAPIKeyChange }) => {
                   <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z" />
                 </svg>
                 <button>
-                  <p 
+                  <p
                     onClick={() => {
                       setIsLocationBarVisible(!isLocationBarVisible);
                     }}
@@ -75,27 +82,26 @@ const Header = ({ onAPIKeyChange }) => {
                   </p>
                 </button>
                 <div
-                  className={`absolute text-[#0008] z-50 h-screen p-20 pb-24  -left-60 -top-1/2 mr-10  ${
-                    isLocationBarVisible
+                  className={`absolute text-[#0008] z-50 h-screen p-20 pb-24  -left-60 -top-1/2 mr-10  ${isLocationBarVisible
                       ? "translate-x-[800rem] md:translate-x-[-700px]"
                       : ""
-                  }   backdrop-filter backdrop-blur-3xl saturate-100 bg-opacity-13 border border-gray-300 rounded-lg ` }
+                    }   backdrop-filter backdrop-blur-3xl saturate-100 bg-opacity-13 border border-gray-300 rounded-lg `}
                 >
                   <svg
-                 onClick={() => {
-                  setIsLocationBarVisible((prev) => !prev);
-                }}
-                  className="absolute hover:text-[#fc8019] fill-[#fc8019] top-2 right-0 w-14 cursor-pointer"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="2"
+                    onClick={() => {
+                      setIsLocationBarVisible((prev) => !prev);
+                    }}
+                    className="absolute hover:text-[#fc8019] fill-[#fc8019] top-2 right-0 w-14 cursor-pointer"
+                    clipRule="evenodd"
+                    fillRule="evenodd"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="2"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="m21 3.998c0-.478-.379-1-1-1h-16c-.62 0-1 .519-1 1v16c0 .621.52 1 1 1h16c.478 0 1-.379 1-1zm-8.991 6.932 2.717-2.718c.146-.146.338-.219.53-.219.405 0 .751.325.751.75 0 .193-.073.384-.219.531l-2.718 2.717 2.728 2.728c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.384-.073-.531-.219l-2.728-2.728-2.728 2.728c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l2.728-2.728-2.722-2.722c-.146-.147-.219-.338-.219-.531 0-.425.346-.749.75-.749.192 0 .384.073.53.219z"
-                      fill-rule="nonzero"
+                      fillRule="nonzero"
                     />
                   </svg>
                   <ul className="list-none  font-bold text-2xl leading-loose  pl-14 py-10  ">
@@ -116,7 +122,7 @@ const Header = ({ onAPIKeyChange }) => {
                     </li>
 
                     <hr className="border-black border-1 border-dashed my-2" />
-                  <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
+                    <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div className="">
                         <Link to="home">
                           <p
@@ -132,7 +138,7 @@ const Header = ({ onAPIKeyChange }) => {
                       </div>
                     </li>
                     <hr className="border-black border-1 border-dashed my-2" />
-                  <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
+                    <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div
                         className=""
                         onClick={() => {
@@ -147,7 +153,7 @@ const Header = ({ onAPIKeyChange }) => {
                       </div>
                     </li>
                     <hr className="border-black border-1 border-dashed my-2" />
-                  <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
+                    <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div
                         className=""
                         onClick={() => {
@@ -162,7 +168,7 @@ const Header = ({ onAPIKeyChange }) => {
                       </div>
                     </li>
                     <hr className="border-black border-1 border-dashed my-2" />
-                  <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
+                    <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div
                         className=""
                         onClick={() => {
@@ -177,7 +183,7 @@ const Header = ({ onAPIKeyChange }) => {
                       </div>
                     </li>
                     <hr className="border-black border-1 border-dashed my-2" />
-                  <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
+                    <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div
                         className=""
                         onClick={() => {
@@ -220,8 +226,8 @@ const Header = ({ onAPIKeyChange }) => {
               width="20"
               height="20"
               xmlns="http://www.w3.org/2000/svg"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
             >
               <path d="M22 22h-20c-1.104 0-2-.896-2-2v-12c0-1.104.896-2 2-2h1.626l.078.283c.194.631.518 1.221.95 1.717h-2.154c-.276 0-.5.224-.5.5v5.5h20v-5.5c0-.276-.224-.5-.5-.5h-2.154c.497-.569.853-1.264 1.029-2h1.625c1.104 0 2 .896 2 2v12c0 1.104-.896 2-2 2zm-20-5v2.5c0 .276.224.5.5.5h19c.276 0 .5-.224.5-.5v-2.5h-20zm8.911-5h-2.911c.584-1.357 1.295-2.832 2-4-.647-.001-1.572.007-2 0-2.101-.035-2.987-1.806-3-3-.016-1.534 1.205-3.007 3-3 1.499.006 2.814.872 4 2.313 1.186-1.441 2.501-2.307 4-2.313 1.796-.007 3.016 1.466 3 3-.013 1.194-.899 2.965-3 3-.428.007-1.353-.001-2 0 .739 1.198 1.491 2.772 2 4h-2.911c-.241-1.238-.7-2.652-1.089-3.384-.388.732-.902 2.393-1.089 3.384zm-2.553-7.998c-1.131 0-1.507 1.918.12 1.998.237.012 2.235 0 2.235 0-1.037-1.44-1.52-1.998-2.355-1.998zm7.271 0c1.131 0 1.507 1.918-.12 1.998-.237.012-2.222 0-2.222 0 1.037-1.44 1.507-1.998 2.342-1.998z" />
             </svg>
@@ -239,8 +245,8 @@ const Header = ({ onAPIKeyChange }) => {
               width="20"
               height="20"
               xmlns="http://www.w3.org/2000/svg"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
             >
               <path d="M7 16.488l1.526-.723c1.792-.81 2.851-.344 4.349.232 1.716.661 2.365.883 3.077 1.164 1.278.506.688 2.177-.592 1.838-.778-.206-2.812-.795-3.38-.931-.64-.154-.93.602-.323.818 1.106.393 2.663.79 3.494 1.007.831.218 1.295-.145 1.881-.611.906-.72 2.968-2.909 2.968-2.909.842-.799 1.991-.135 1.991.72 0 .23-.083.474-.276.707-2.328 2.793-3.06 3.642-4.568 5.226-.623.655-1.342.974-2.204.974-.442 0-.922-.084-1.443-.25-1.825-.581-4.172-1.313-6.5-1.6v-5.662zm-1 6.538h-4v-8h4v8zm1-7.869v-1.714c-.006-1.557.062-2.447 1.854-2.861 1.963-.453 4.315-.859 3.384-2.577-2.761-5.092-.787-7.979 2.177-7.979 2.907 0 4.93 2.78 2.177 7.979-.904 1.708 1.378 2.114 3.384 2.577 1.799.415 1.859 1.311 1.853 2.879 0 .13-.011 1.171 0 1.665-.483-.309-1.442-.552-2.187.106-.535.472-.568.504-1.783 1.629-1.75-.831-4.456-1.883-6.214-2.478-.896-.304-2.04-.308-2.962.075l-1.683.699z" />
             </svg>
@@ -252,8 +258,9 @@ const Header = ({ onAPIKeyChange }) => {
               About
             </Link>
           </li>
+
           <li className=" group mr-8 flex">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               className="relative top-1 mr-2 group-hover:text-[#fc8019] group-hover:fill-[#fc8019]"
               width="20"
@@ -261,13 +268,26 @@ const Header = ({ onAPIKeyChange }) => {
               viewBox="0 0 24 24"
             >
               <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10zm0-18.8c-4.853 0-8.8 3.947-8.8 8.8s3.947 8.8 8.8 8.8 8.8-3.947 8.8-8.8-3.947-8.8-8.8-8.8zm0 15.05c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.432-3.468.572-.544 1.024-.975.962-1.821-.058-.805-.73-1.226-1.364-1.226-.709 0-1.538.527-1.538 2.013h-2.011c0-2.4 1.41-3.95 3.59-3.95 1.036 0 1.942.339 2.551.955.57.578.865 1.372.854 2.298-.018 1.383-.859 2.291-1.536 3.021z" />
+            </svg> */}
+            <svg
+              className=" cursor-pointer relative top-1 mr-2 group-hover:text-[#fc8019] group-hover:fill-[#fc8019]"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 24"
+              width="20"
+              height="20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clipRule="evenodd"
+              ></path>
             </svg>
             <Link
               to="/contact"
-              title="help"
+              title="contact"
               className="hover:text-[#fc8019] group-hover:text-[#fc8019]"
             >
-              Help
+              Contact
             </Link>
           </li>
 
@@ -284,7 +304,7 @@ const Header = ({ onAPIKeyChange }) => {
               </svg>
             </p>
             <p className=" mr-2  group group-hover:text-[#fc8019] group-hover:fill-[#fc8019] font-bold cursor-pointer">
-              Hello, Adarsh
+              Hello, {loggedUser}
             </p>
 
             {isDropdownOpen && (
@@ -315,7 +335,12 @@ const Header = ({ onAPIKeyChange }) => {
               title="cart"
               className=" group  hover:text-[#fc8019]"
             >
-              <span>Cart</span>
+              <div>
+                <span className="">Cart</span>
+                <p class="relative -top-9  left-4  bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
+                  {ItemCount.length}
+                </p>
+              </div>
             </Link>
           </li>
         </ul>

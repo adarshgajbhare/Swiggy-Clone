@@ -77,15 +77,15 @@ const RestaurantCard = ({ resData }) => {
     </div>
   );
 };
-//  the below code is not longer needed because swigy has removed the promoted tag
-// export const withPromotedLabel = () => {
-//   return (props) => {
-//     return (
-//       <div>
-//         <label className=" bg-gray-400 text-lg  text-red-600 ">Promoted</label>
+//  the below code is not longer needed because swiggy has removed the promoted tag
+{/*export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className=" bg-gray-400 text-lg  text-red-600 ">Promoted</label>
 
-//         <RestaurantCard {...props} />
-//       </div>
-//     );  };};
+        <RestaurantCard {...props} />
+      </div>
+    );  };};*/}
 
 export default RestaurantCard;

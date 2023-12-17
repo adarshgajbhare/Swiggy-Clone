@@ -49,9 +49,9 @@ const Contact = () => {
             }}
           ></textarea>
           <div className="button-container">
-            <div className="send-button">Send</div>
+            <div className="send-button  cursor-pointer">Send</div>
             <div className="reset-button-container">
-              <div id="reset-btn" className="reset-button" onClick={resetAll}>
+              <div id="reset-btn" className="reset-button  cursor-pointer"  onClick={resetAll}>
                 Reset
               </div>
             </div>

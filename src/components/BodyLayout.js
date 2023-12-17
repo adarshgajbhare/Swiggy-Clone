@@ -5,14 +5,16 @@ import Search from "./Search";
 import Shimmer from "./Shimmer";
 import useFetchData from "../utils/useFetchData";
 import { useState, useEffect } from "react";
-
+// import { withPromotedLabel } from "./RestaurantCard";
 const BodyLayout = () => {
   const api = useOutletContext();
   const { data, loading } = useFetchData(api);
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
 
+
+  console.log(api)
  
-  // const PromotedRestaurantCard =  withPromotedLabel(RestaurantCard)
+//  const PromotedRestaurantCard =  withPromotedLabel(RestaurantCard)
 
   useEffect(() => {
     setFilteredListOfRestaurant(data);
@@ -37,10 +39,12 @@ const BodyLayout = () => {
         <div className="res-container">
           {filteredListOfRestaurant &&
             filteredListOfRestaurant.map((restaurant) => (
+              
               <Link
                 key={restaurant?.info?.id}
                 to={`/menu/${restaurant?.info?.id}`}
               >
+                
                 {/* {restaurant.info.availability.opened ? <PromotedRestaurantCard resData={restaurant?.info}/> :  <RestaurantCard resData={restaurant?.info} />} */}
                 <RestaurantCard resData={restaurant?.info} />
               </Link>

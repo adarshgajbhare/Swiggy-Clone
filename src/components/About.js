@@ -1,25 +1,31 @@
 import React from "react";
 import UserClass from "./UserClass";
-import UserCard from "./UserCard";
+// import UserCard from "./UserCard";
+// import UserName from "./UserName";
 
 class About extends React.Component {
-
-  constructor (){
+  constructor() {
     super();
-    console.log("parent constructor");
   }
-  componentDidMount (){
-    console.log("parent componentDidMount")
+  componentDidMount() {}
+  render() {
+    return (
+/* <div className="text-black border-2 border-black">Logged User :   
+          <UserName.Consumer>
+            {({loggedUser})=> <h1 className="text-black">{loggedUser}</h1> }
+          </UserName.Consumer>
+        </div> */
+      <div>
+        <UserClass
+          name={"First"}
+          location={"Naigaon"}
+          username={"adarsh.gatsby"}
+        />
+      </div>
+    );
   }
-  render () { 
-    console.log("parent render");
-  return (
-    
-    <div>
-      <h1>About</h1>
-      <UserClass name={"First"} location={"Naigaon"} username={"adarsh.gatsby"} />
-    </div>
-  );
 }
-};
 export default About;
+
+
+
