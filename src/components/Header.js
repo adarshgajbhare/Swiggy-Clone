@@ -337,7 +337,7 @@ const Header = ({ onAPIKeyChange }) => {
             >
               <div>
                 <span className="">Cart</span>
-                <p class="relative -top-9  left-4  bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
+                <p className="relative -top-9  left-4  bg-orange-500 text-white flex justify-center items-center w-5 h-5 text-xs rounded-full">
                   {ItemCount.length}
                 </p>
               </div>

@@ -30,14 +30,14 @@ const RestaurantMenus = () => {
   const { itemCards } =
     resMenu?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-  //
+
   const category =
     resMenu?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log(category);
+
 
   return (
     <div className="bg-white">

@@ -8,7 +8,7 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
-    console.log(searchFilterList);
+    //console.log(searchFilterList);
     if (searchFilter.length === 0) {
     }
     setFilteredListOfRestaurant(searchFilterList);
@@ -18,7 +18,7 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
     const topRatedList = resData.filter((restaurant) => {
       return restaurant.info.avgRating >= 4.5;
     });
-    console.log("top rated" + topRatedList);
+   
 
     setFilteredListOfRestaurant(topRatedList);
   };
@@ -32,7 +32,7 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
     const lowRatedList = resData.filter((restaurant) => {
       return restaurant.info.avgRating < 4;
     });
-    console.log("low rated" + lowRatedList);
+   
     setFilteredListOfRestaurant(lowRatedList);
   };
 

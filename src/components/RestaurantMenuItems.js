@@ -4,20 +4,20 @@ import { addItem, removeItem } from "../store/cartSlice";
 import { useState } from "react";
 
 const RestaurantMenuItems = ({ items }) => {
-  const [btnTransform, setBtnTransform] = useState(true);
-  const [itemCount, setItemCount] = useState(0);
+
   const dispatch = useDispatch();
 
   const handleAddItem = (menuItem) => {
-    dispatch(addItem(menuItem));
-    setBtnTransform(false);
-    setItemCount(itemCount + 1);
+    console.log("add clicked");
+    try {
+      dispatch(addItem(menuItem));
+    } catch (error) {
+      console.error("Error in handleAddItem:", error);
+    }
   };
+  
 
-  const handleMinusItem = (menuItem) => {
-    setItemCount(itemCount - 1);
-    dispatch(removeItem(menuItem));
-  };
+
   return (
     <div className="">
       {items &&
@@ -46,35 +46,13 @@ const RestaurantMenuItems = ({ items }) => {
                 src={CARD_IMG + menuItem.card.info.imageId}
               />
               <div className="container-btn">
-                {btnTransform ? (
-                  <button
-                    className="w-20 h-8 absolute bottom-1 ml-2 left-24 transform -translate-x-1/2 bg-green-500 text-white border-none cursor-pointer m-0 p-1rem outline-none rounded-md font-bold text-xs shadow-md transition duration-200 ease-out hover:shadow-lg hover:text-green-500 hover:bg-white"
-                    onClick={() => handleAddItem(menuItem)}
-                  >
-                    ADD
-                  </button>
-                ) : (
-                  <div className="flex items-center justify-center space-x-2">
-                    <button
-                      disabled={itemCount === 0}
-                      onClick={handleMinusItem}
-                      className="w-20 h-8 bg-green-500 text-white border-none cursor-pointer outline-none rounded-md font-bold text-xs shadow-md transition duration-200 ease-out hover:shadow-lg hover:text-green-500 hover:bg-white"
-                    >
-                      −
-                    </button>
-                    <input
-                      type="number"
-                      value={itemCount}
-                      className="border-2 w-20 text-center"
-                    />
-                    <button
-                      onClick={() => handleAddItem(menuItem)}
-                      className="w-20 h-8 bg-green-500 text-white border-none cursor-pointer outline-none rounded-md font-bold text-xs shadow-md transition duration-200 ease-out hover:shadow-lg hover:text-green-500 hover:bg-white"
-                    >
-                      +
-                    </button>
-                  </div>
-                )}
+                <button
+                  className="w-20 h-8 absolute bottom-1 ml-2 left-24 transform -translate-x-1/2 bg-green-500 text-white border-none cursor-pointer m-0 p-1rem outline-none rounded-md font-bold text-xs shadow-md transition duration-200 ease-out hover:shadow-lg hover:text-green-500 hover:bg-white"
+                  onClick={() =>   handleAddItem(menuItem )}
+                >
+                  ADD
+                </button>
+
               </div>
             </div>
           </div>

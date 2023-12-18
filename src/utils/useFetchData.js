@@ -15,9 +15,9 @@ const useFetchData = (api) => {
           const processedData = checkJsonData(json);
           setData(processedData);
           setLoading(false);
-          console.log(json);
+        
         } else {
-          console.log("No data fetched from API");
+        
         }
       } catch (error) {
         console.error("Error fetching data:", error);

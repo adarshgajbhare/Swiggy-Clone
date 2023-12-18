@@ -11,11 +11,6 @@ const BodyLayout = () => {
   const { data, loading } = useFetchData(api);
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
 
-
-  console.log(api)
- 
-//  const PromotedRestaurantCard =  withPromotedLabel(RestaurantCard)
-
   useEffect(() => {
     setFilteredListOfRestaurant(data);
   }, [data]);
