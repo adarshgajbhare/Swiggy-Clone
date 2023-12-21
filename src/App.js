@@ -28,7 +28,7 @@ const App = () => {
   const [name, setName] = useState();
   useEffect(() => {
     const dummyData = {
-      name: "AG The Gangsta",
+      name: "AG",
     };
     setName(dummyData.name);
   }, []);
@@ -46,7 +46,7 @@ const App = () => {
 
         <Outlet context={api} />
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </UserName.Provider>
     </Provider>
