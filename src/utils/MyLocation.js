@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import locationContext from "./locationContext";
+//import locationContext from "./locationContext";
 
 const MyLocation = () => {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
@@ -8,7 +8,7 @@ const MyLocation = () => {
   const [loading, setLoading] = useState(false);
 
   const { MyLongitude, MyLatitude, setMyLocation } =
-    useContext(locationContext);
+    //useContext(locationContext);
 
   useEffect(() => {
     const fetchData = async () => {
