@@ -47,11 +47,19 @@ body {
     line-height: 1.5;
     font-family: 'Inter Tight', sans-serif;
     /* background-color:#d4a373 ; */
-    margin: 0 0 100px;
-  
+    margin: 0;
+    padding: 0;
+ 
     overflow-x: hidden;
     
 }
+/* body::after{
+
+    content: '';
+    inset:  0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.432);
+} */
 
 /* Set shorter line heights on headings and interactive elements */
 h1,

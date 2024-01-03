@@ -48,8 +48,8 @@ const Footer = () => {
   // export default Footer;
 
   return (
-    <div class=" flex text-black justify-center shadow-2xl ">
-      <div class=" items-center justify-center ">
+    <div className=" flex text-black justify-center shadow-2xl ">
+      <div className=" items-center justify-center ">
         Made with ❤️ by Adarsh Gajbhare
       </div>
     </div>

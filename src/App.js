@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import BodyLayout from "./components/BodyLayout";
 import Footer from "./components/Footer";
-import { PUNE_API } from "./utils/constants";
+
 // import About from "./components/About";
 import {
   BrowserRouter,
@@ -22,6 +22,8 @@ import Splash from "./components/Splash";
 import UserName from "./components/UserName";
 import { Provider } from "react-redux";
 import appStore from "./store/appStore";
+import MyLocation from "./utils/MyLocation";
+import { getCityAPI } from "./utils/constants";
 const About = lazy(() => import("./components/About"));
 
 const App = () => {
@@ -33,26 +35,28 @@ const App = () => {
     setName(dummyData.name);
   }, []);
 
-  const [api, setAPI_KEY] = useState(PUNE_API);
+  const [api, setAPI_KEY] = useState(getCityAPI(18.516726, 73.856255));
 
-  const handleAPIKeyChange = (newAPIKey) => {
+  const handleAPIKeyChange = (newAPIKey, latitude, longitude) => {
     setAPI_KEY(newAPIKey);
   };
   return (
-    <Provider store={appStore}> 
-    <UserName.Provider value={{ loggedUser: name, setName }}>
-      <div className="app">
-        <Header onAPIKeyChange={handleAPIKeyChange} />
+   
+    <Provider store={appStore}>
+    
+      <UserName.Provider value={{ loggedUser: name, setName }}>
+        <div className="app">
+       
+          <Header onAPIKeyChange={handleAPIKeyChange} />
 
-        <Outlet context={api} />
+          <Outlet context={api} />
 
-        <Footer />
-      </div>
-    </UserName.Provider>
+          <Footer />
+        </div>
+      </UserName.Provider>
     </Provider>
   );
 };
-<UserName.Provider value={{ loggedUser: name }}></UserName.Provider>
 const appRoute = createBrowserRouter([
   {
     path: "/",
@@ -71,8 +75,7 @@ const appRoute = createBrowserRouter([
         path: "/about",
         element: (
           <Suspense fallback={<h1>About Loading....</h1>}>
-            {" "}
-            <About />{" "}
+            <About />
           </Suspense>
         ),
       },
@@ -97,5 +100,4 @@ const appRoute = createBrowserRouter([
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider  router={appRoute} />);
-// root.render(<App />);
+root.render(<RouterProvider router={appRoute} />);

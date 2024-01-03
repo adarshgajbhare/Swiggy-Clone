@@ -1,30 +1,74 @@
 import {
-  BANGALORE_API,
-  DELHI_API,
-  HYDERABAD_API,
-  MUMBAI_API,
-  NANDED_API,
-  PUNE_API,
+
+
 } from "../utils/constants";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../CSS/style.css";
 import { Link } from "react-router-dom";
 import UserName from "./UserName";
 import { useSelector } from "react-redux";
-import appStore from "../store/appStore";
+import { getCityAPI } from "../utils/constants";
 
-const Header = ({ onAPIKeyChange }) => {
+
+const Header = ({ onAPIKeyChange, latitude, longitude }) => {
   const [locationName, setLocationName] = useState("Pune");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isLocationBarVisible, setIsLocationBarVisible] = useState(true);
-
+  const [showShimmer, setShowShimmer] = useState(false);
   const { loggedUser } = useContext(UserName);
 
   const ItemCount = useSelector((store) => store.cart.items);
-  //console.log("@@@@@@@@@@@@" , {ItemCount})
 
+  const [position, setPosition] = useState({ latitude: null, longitude: null });
+
+  const [cityName, setCityName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const HandleShimmer = () => {
+    setShowShimmer(true);
+
+    
+    setTimeout(() => {
+      setShowShimmer(false);
+    }, 2000);
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
+            cityName
+          )}&key=3b5dfc8119d5483b8f277c1ec4aff30d`
+        );
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+          const firstResult = data.results[0].geometry;
+          setPosition({
+            latitude: firstResult.lat,
+            longitude: firstResult.lng,
+          });
+        } else {
+          console.log("No results found for the provided city.");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (cityName) {
+      fetchData();
+    }
+  }, [cityName]);
+
+
+  
   return (
     <header>
+      
       <nav className=" shadow-md mb-8 flex  ">
         <div className="flex relative top-1">
           <span className=" relative top-2">
@@ -63,35 +107,55 @@ const Header = ({ onAPIKeyChange }) => {
             <span className="relative ">
               <div className="flex items-center group">
                 <svg
+                  onClick={() => {
+                    { 
+                      document.querySelector('body').style.backgroundColor=' rgba(0, 0, 0, 0.632)';
+                      document.querySelector('body').style.transitionDuration='0.5s';
+                     //  document.querySelector('body').style.transition='ease-in';
+                   }
+                    setIsLocationBarVisible((prev) => !prev);
+                  }}
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
+                  width="30"
+                  height="30"
                   viewBox="0 0 24 24"
-                  className=" hover:text-[#fc8019] group-hover:fill-[#fc8019] "
+                  className=" cursor-pointer hover:text-[#fc8019] group-hover:fill-[#fc8019] "
                 >
                   <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z" />
                 </svg>
                 <button>
                   <p
                     onClick={() => {
+                    { 
+                       document.querySelector('body').style.backgroundColor=' rgba(0, 0, 0, 0.632)';
+                       document.querySelector('body').style.transitionDuration='0.5s';
+                      //  document.querySelector('body').style.transition='ease-in';
+                    }
                       setIsLocationBarVisible(!isLocationBarVisible);
-                    }}
-                    className="mr-8 hover:text-[#fc8019] group-hover:fill-[#fc8019] text-[#3d4152a5] font-bold text-2xl "
+                    }
+                  }
+
+                    className=" overflow-hidden whitespace-nowrap overflow-ellipsis max-w-[15ch]  mr-8 hover:text-[#fc8019] group-hover:fill-[#fc8019] text-[#3d4152a5] font-bold text-2xl "
                   >
-                    {locationName}
+                    {locationName || cityName}
                   </p>
                 </button>
                 <div
-                  className={`absolute text-[#0008] z-50 h-screen p-20 pb-24  -left-60 -top-1/2 mr-10  ${isLocationBarVisible
+                  className={`absolute text-[#0008] z-50 h-screen p-20 pb-24  -left-60 -top-1/2 mr-10  ${
+                    isLocationBarVisible
                       ? "translate-x-[800rem] md:translate-x-[-700px]"
                       : ""
-                    }   backdrop-filter backdrop-blur-3xl saturate-100 bg-opacity-13 border border-gray-300 rounded-lg `}
+                  }   backdrop-filter backdrop-blur-3xl saturate-100 bg-opacity-13 border border-gray-300 rounded-lg `}
                 >
                   <svg
                     onClick={() => {
+                      { 
+                        document.querySelector('body').style.backgroundColor='white';
+                        document.querySelector('body').style.transitionDuration='1s';
+                     }
                       setIsLocationBarVisible((prev) => !prev);
                     }}
-                    className="absolute hover:text-[#fc8019] fill-[#fc8019] top-2 right-0 w-14 cursor-pointer"
+                    className="  absolute hover:text-[#fc8019] fill-[#fc8019] top-2 right-0 w-14 cursor-pointer"
                     clipRule="evenodd"
                     fillRule="evenodd"
                     strokeLinejoin="round"
@@ -105,12 +169,47 @@ const Header = ({ onAPIKeyChange }) => {
                     />
                   </svg>
                   <ul className="list-none  font-bold text-2xl leading-loose  pl-14 py-10  ">
+                    <li>
+                      <div className=" flex "> 
+                      <input 
+                        placeholder="Enter City Name"
+                        className="outline-0  placeholder-[#3d4152b5] p-1   ml-96 flex justify-center items-center   px-2 py-0   rounded-lg  shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] "
+                        type="text"
+                        id="cityInput"
+                        value={cityName}
+                        onChange={(e) => setCityName(e.target.value)}
+                        
+                      />
+                      
+                      <button
+                        className="btn-search ml-2"
+                        onClick={() => {
+                          { 
+                            document.querySelector('body').style.backgroundColor='white';
+                            document.querySelector('body').style.transitionDuration='1s';
+                         }
+                         setIsLocationBarVisible(!isLocationBarVisible);
+                          setLocationName(cityName);
+                          onAPIKeyChange(
+                            getCityAPI(position.latitude, position.longitude)
+                          );
+                        }}
+                      >
+                        search
+                      </button></div>
+                    </li>
                     <li className="hover:text-[#fc8019]  hover:scale-125  transition duration-200">
                       <div className="">
                         <Link to="home">
                           <p
                             onClick={() => {
-                              onAPIKeyChange(PUNE_API);
+                              { 
+                                document.querySelector('body').style.backgroundColor='white';
+                                document.querySelector('body').style.transitionDuration='1s';
+                             }
+                              onAPIKeyChange(
+                                getCityAPI(18.516726, 73.856255)
+                              );
                               setLocationName("Pune");
                               setIsLocationBarVisible((prev) => !prev);
                             }}
@@ -127,7 +226,14 @@ const Header = ({ onAPIKeyChange }) => {
                         <Link to="home">
                           <p
                             onClick={() => {
-                              onAPIKeyChange(MUMBAI_API);
+                              { 
+                                document.querySelector('body').style.backgroundColor='white';
+                                document.querySelector('body').style.transitionDuration='1s';
+                             }
+                              HandleShimmer
+                              onAPIKeyChange(
+                                getCityAPI(19.0759837 , 72.8776559)
+                              );
                               setLocationName("Mumbai");
                               setIsLocationBarVisible((prev) => !prev);
                             }}
@@ -142,7 +248,11 @@ const Header = ({ onAPIKeyChange }) => {
                       <div
                         className=""
                         onClick={() => {
-                          onAPIKeyChange(BANGALORE_API);
+                          { 
+                            document.querySelector('body').style.backgroundColor='white';
+                            document.querySelector('body').style.transitionDuration='3s';
+                         }
+                          onAPIKeyChange(getCityAPI(12.9715987 , 77.5945627));
                           setLocationName("Bangalore");
                           setIsLocationBarVisible((prev) => !prev);
                         }}
@@ -157,7 +267,11 @@ const Header = ({ onAPIKeyChange }) => {
                       <div
                         className=""
                         onClick={() => {
-                          onAPIKeyChange(NANDED_API);
+                          { 
+                            document.querySelector('body').style.backgroundColor='white';
+                            document.querySelector('body').style.transitionDuration='1s';
+                         }
+                          onAPIKeyChange(getCityAPI(lat=19.1485289 , 77.3191471));
                           setLocationName("Nanded");
                           setIsLocationBarVisible((prev) => !prev);
                         }}
@@ -172,7 +286,11 @@ const Header = ({ onAPIKeyChange }) => {
                       <div
                         className=""
                         onClick={() => {
-                          onAPIKeyChange(DELHI_API);
+                          { 
+                            document.querySelector('body').style.backgroundColor='white';
+                            document.querySelector('body').style.transitionDuration='1s';
+                         }
+                          onAPIKeyChange(getCityAPI(28.7040592 , 77.10249019999999));
                           setLocationName("Delhi");
                           setIsLocationBarVisible((prev) => !prev);
                         }}
@@ -187,7 +305,11 @@ const Header = ({ onAPIKeyChange }) => {
                       <div
                         className=""
                         onClick={() => {
-                          onAPIKeyChange(HYDERABAD_API);
+                          { 
+                            document.querySelector('body').style.backgroundColor='white';
+                            document.querySelector('body').style.transitionDuration='1s';
+                         }
+                          onAPIKeyChange(getCityAPI(17.385044 , 78.486671));
                           setLocationName("Hyderabad");
                           setIsLocationBarVisible((prev) => !prev);
                         }}
@@ -220,7 +342,7 @@ const Header = ({ onAPIKeyChange }) => {
               <span className=" hover:text-[#fc8019]"> Home</span>
             </Link>
           </li>
-          <li className="group mr-8 flex">
+          {/* <li className="group mr-8 flex">
             <svg
               className="mr-2 relative top-1 group-hover:text-[#fc8019] group-hover:fill-[#fc8019] "
               width="20"
@@ -238,7 +360,7 @@ const Header = ({ onAPIKeyChange }) => {
             >
               Offers
             </Link>
-          </li>
+          </li> */}
           <li className="group flex">
             <svg
               className=" mr-2 relative top-1 group-hover:text-[#fc8019] group-hover:fill-[#fc8019] "

@@ -39,14 +39,18 @@ const Search = ({ resData, setFilteredListOfRestaurant }) => {
   return (
 <div className=" flex justify-between items-center mr-12">
   <div className="flex text-white">
-
-  <button onClick={allRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+{/* mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1 
+ text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] 
+ border-[#fc8019] shadow-sm transition duration-200 ease-in-out 
+ hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none 
+ focus:border-[#fc8019] focus:ring ring-[#fc8019] */}
+  <button onClick={allRated} className="btn-search  mr-4 bg-[#fc8019] text-white font-bold">
   Popular
       </button>
-  <button onClick={topRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+  <button onClick={topRated} className="btn-search  mr-4 bg-[#fc8019] text-white font-bold">
   Top Rated
       </button>
-  <button onClick={lowRated} className=" mr-4 inline-block outline-none cursor-pointer   h-10 px-6 py-1  text-sm font-semibold  border rounded-lg text-white bg-[#fc8019] border-[#fc8019] shadow-sm transition duration-200 ease-in-out hover:bg-[#fc8019] hover:border-[#fc8019] focus:outline-none focus:border-[#fc8019] focus:ring ring-[#fc8019]">
+  <button onClick={lowRated} className=" btn-search  mr-4  bg-[#fc8019] text-white font-bold">
   Low Rated
       </button>
 

@@ -2,17 +2,16 @@ import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { CARD_IMG } from "../utils/constants";
 import { addItem } from "../store/cartSlice";
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const RestaurantMenuItems = ({ items }) => {
   const dispatch = useDispatch();
 
-
-  const notify = () => toast('Here is your toast.');
-
   const handleAddItem = (menuItem  ) =>
    {
-   
+  
     try {
+     
       dispatch(addItem( menuItem ));
     } catch (error) {
       console.error("Error in handleAddItem:", error);
@@ -51,7 +50,7 @@ const RestaurantMenuItems = ({ items }) => {
                 <div className="container-btn">
                   <button
                     className="w-20 h-8 absolute bottom-1 ml-2 left-24 transform -translate-x-1/2 bg-green-500 text-white border-none cursor-pointer m-0 p-1rem outline-none rounded-md font-bold text-xs shadow-md transition duration-200 ease-out hover:shadow-lg hover:text-green-500 hover:bg-white"
-                    onClick={()  => handleAddItem(menuItem )}
+                  onClick={()  => handleAddItem(menuItem )}
                   >
                     ADD
                   </button>
