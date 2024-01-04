@@ -17,19 +17,24 @@ const cartSlice = createSlice({
       );
 
       if (existingItemIndex !== -1) {
-        state.items[existingItemIndex].count += 1; // increaseItemCart
-        state.items[existingItemIndex].count -= 1; // decreaseItemCart
+        state.items[existingItemIndex].count += 1;
       } else {
         state.items.push({ card: action.payload.card, count: 1 });
       }
+
       state.totalPrice +=
         action.payload.card.info.price / 100 ||
         action.payload.card.info.defaultPrice / 100;
       state.discountPrice = (state.totalPrice * 10) / 100;
       state.deliveryFees = (state.totalPrice * 5) / 100;
-      localStorage.setItem("cart", JSON.stringify(state));
-      localStorage.setItem("cart", JSON.stringify(state.totalPrice));
 
+      // Update local storage with only necessary data
+      localStorage.setItem("cart", JSON.stringify({
+        items: state.items,
+        totalPrice: state.totalPrice,
+        discountPrice: state.discountPrice,
+        deliveryFees: state.deliveryFees,
+      }));
     },
 
     removeItem: (state, action) => {
@@ -39,7 +44,6 @@ const cartSlice = createSlice({
       );
 
       if (itemToRemove) {
-        
         state.totalPrice -=
           itemToRemove.card.info.price / 100 ||
           itemToRemove.card.info.defaultPrice / 100;
@@ -48,18 +52,32 @@ const cartSlice = createSlice({
         state.items = state.items.filter(
           (item) => item.card.info.id !== itemIdToRemove
         );
-       localStorage.setItem("cart", JSON.stringify({ items: state.items }));
-       //localStorage.setItem("cart" ,  JSON.stringify({ totalPrice :  state.totalPrice}));
-        // localStorage.setItem("cart", JSON.stringify(state));
+
+        // Update local storage with only necessary data
+        localStorage.setItem("cart", JSON.stringify({
+          items: state.items,
+          totalPrice: state.totalPrice,
+          discountPrice: state.discountPrice,
+          deliveryFees: state.deliveryFees,
+        }));
       }
     },
+
     clearCart: (state) => {
       state.items.length = 0;
       state.deliveryFees = 0;
       state.totalPrice = 0;
       state.discountPrice = 0;
+
+      // Update local storage with only necessary data
+      localStorage.setItem("cart", JSON.stringify({
+        items: state.items,
+        totalPrice: state.totalPrice,
+        discountPrice: state.discountPrice,
+        deliveryFees: state.deliveryFees,
+      }));
     },
-    // cartSlice.js
+
     decreaseItemCart: (state, action) => {
       const { id } = action.payload;
       const itemToDecrease = state.items.find(
@@ -74,7 +92,6 @@ const cartSlice = createSlice({
         state.discountPrice = (state.totalPrice * 10) / 100;
         state.deliveryFees = (state.totalPrice * 5) / 100;
       }
-     
     },
 
     increaseItemCart: (state, action) => {
@@ -91,7 +108,6 @@ const cartSlice = createSlice({
         state.discountPrice = (state.totalPrice * 10) / 100;
         state.deliveryFees = (state.totalPrice * 5) / 100;
       }
-   
     },
   },
 });
