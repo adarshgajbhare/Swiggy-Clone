@@ -106,8 +106,8 @@ const Cart = () => {
                     (
                     {
                       (fixedPrice =
-                        menuItem.card.info.price.toFixed(2) / 100 ||
-                        menuItem.card.info.defaultPrice.toFixed(2) / 100)
+                        menuItem.card.info.price?.toFixed(2) / 100 ||
+                        menuItem.card.info.defaultPrice?.toFixed(2) / 100)
                     }
                     {" X "} {menuItem.count})
                   </p>
