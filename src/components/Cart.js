@@ -54,6 +54,7 @@ const Cart = () => {
   }
   return (
     <div className="  ">
+   
       {/* <div className="flex justify-between">
         <h1 className="text-2xl font-bold uppercase text-black">CART</h1>
 
@@ -105,7 +106,7 @@ const Cart = () => {
                   <p className=" inline-block ml-2">
                     (
                     {
-                      (fixedPrice =
+                      (
                         menuItem.card.info.price?.toFixed(2) / 100 ||
                         menuItem.card.info.defaultPrice?.toFixed(2) / 100)
                     }
