@@ -8,16 +8,23 @@ const useFetchData = (api) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(api);
+       console.log("#############",api);
+       console.log();
+        const response = await  fetch(api);
+        console.log("data found here !! ", response.data);
+        if(!response){
+          return " FUCKKKKK Error fetching API fucked Up";
+        }
         const json = await response.json();
-
+              console.log("data found here !! ", json.data);
         if (json) {
           const processedData = checkJsonData(json);
+          console.log("data found here processed data", processedData);
           setData(processedData);
           setLoading(false);
         
         } else {
-        
+        console.log("something went wrong Adarsh")
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -34,13 +41,15 @@ const useFetchData = (api) => {
       const restaurantsData =
         jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-
+         // console.log("################## From here",restaurantsData);
       if (restaurantsData !== undefined) {
         restaurantsData.forEach((restaurant) => {
           const id = restaurant?.info?.id;
+         // console.log("####Iddddddd ",id);
 
           if (id && !allRestaurantsData.some((item) => item.info.id === id)) {
             allRestaurantsData.push(restaurant);
+            //console.log("####ADDDDDDDDDDDDDDDD ",allRestaurantsData);
           }
         });
       }
